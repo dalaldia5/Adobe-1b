@@ -1,0 +1,18 @@
+# Core dependencies for persona-driven document intelligence
+torch>=1.9.0
+transformers>=4.20.0
+sentence-transformers>=2.2.0
+
+# PDF processing
+PyMuPDF>=1.20.0
+
+# General utilities
+numpy>=1.21.0
+scikit-learn>=1.0.0
+
+# Optional: for enhanced text processing
+nltk>=3.7
+spacy>=3.4.0
+
+# For development and testing
+pytest>=7.0.0
