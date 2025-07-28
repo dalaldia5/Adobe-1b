@@ -11,20 +11,20 @@ class MiniLMSemanticRanker:
     """
     
     def __init__(self):
-        print("🔍 Loading MiniLM-L6-v2 for semantic search...")
+        print("Loading MiniLM-L6-v2 for semantic search...")
         
         # Load MiniLM for embeddings (~80MB)
         self.embedder = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
         
         # Load spaCy for keyword extraction (~50MB)
-        print("🔍 Loading spaCy for keyword extraction...")
+        print("Loading spaCy for keyword extraction...")
         try:
             self.nlp = spacy.load("en_core_web_sm")
         except OSError:
-            print("⚠️ spaCy model not found. Keywords will use simple extraction.")
+            print("spaCy model not found. Keywords will use simple extraction.")
             self.nlp = None
         
-        print("✅ Semantic ranker ready!")
+        print("Semantic ranker ready!")
     
     def extract_keywords(self, text: str) -> List[str]:
         """Extract keywords using spaCy NER and important terms."""
@@ -66,7 +66,7 @@ class MiniLMSemanticRanker:
     
     def compute_embeddings(self, texts: List[str]) -> np.ndarray:
         """Compute MiniLM embeddings for texts (~10ms per chunk)."""
-        print(f"🧮 Computing embeddings for {len(texts)} texts...")
+        print(f"Computing embeddings for {len(texts)} texts...")
         
         # Batch process for efficiency
         embeddings = self.embedder.encode(
@@ -84,7 +84,7 @@ class MiniLMSemanticRanker:
         """
         Calculate semantic relevance scores using MiniLM embeddings.
         """
-        print(f"🎯 Calculating relevance for {len(chunks)} chunks...")
+        print(f"Calculating relevance for {len(chunks)} chunks...")
         
         # Create optimized query
         query = self.create_persona_query(persona, job)
@@ -129,7 +129,7 @@ class MiniLMSemanticRanker:
         if 'hr' in persona.lower() or 'human resources' in persona.lower():
             if 'fill' in doc_lower and 'sign' in doc_lower:
                 boost_factor *= 2.5  # Major boost for Fill and Sign
-                print(f"🔥 Major boost for Fill and Sign content: {doc_name}")
+                print(f"Major boost for Fill and Sign content: {doc_name}")
             
             if any(term in doc_lower for term in ['form', 'field', 'signature', 'compliance']):
                 boost_factor *= 1.8
@@ -162,7 +162,7 @@ class MiniLMSemanticRanker:
         Rank chunks by relevance using MiniLM semantic search.
         Returns top-k most relevant chunks.
         """
-        print(f"🏆 Ranking chunks for persona: {persona}")
+        print(f"Ranking chunks for persona: {persona}")
         
         # Calculate relevance scores
         scored_chunks = self.calculate_relevance_scores(chunks, persona, job)
@@ -178,7 +178,7 @@ class MiniLMSemanticRanker:
         top_chunks = ranked_chunks[:top_k]
         
         scores = [c["relevance_score"] for c in top_chunks[:5]]
-        print(f"📈 Top 5 relevance scores: {[f'{score:.3f}' for score in scores]}")
-        print(f"📑 Documents in top results: {set(c['document'] for c in top_chunks[:10])}")
+        print(f"Top 5 relevance scores: {[f'{score:.3f}' for score in scores]}")
+        print(f"Documents in top results: {set(c['document'] for c in top_chunks[:10])}")
         
         return top_chunks

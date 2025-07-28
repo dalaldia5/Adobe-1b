@@ -1,0 +1,118 @@
+Initializing Persona-Driven Document Intelligence Pipeline
+Architecture: MiniLM + T5-small + spaCy
+Loading T5 tokenizer for chunk sizing...
+Chunker initialized: 512-1024 tokens per chunk
+Loading MiniLM-L6-v2 for semantic search...
+Loading spaCy for keyword extraction...
+spaCy model not found. Keywords will use simple extraction.
+Semantic ranker ready!
+Loading FLAN-T5-small for summarization...
+Using FLAN-T5-small
+T5 Summarizer ready!
+Pipeline ready!
+Loading input files...
+Persona: HR professional
+Job: Create and manage fillable forms for onboarding and compliance.
+Processing documents from: /Users/dia/Desktop/Adobe-1b-latest/Adobe-1b/solution/../input/docs
+Target: 5 PDFs in <60 seconds
+
+Step 1: Token-based chunking (parallel)...
+Found 15 PDF files
+Processing: Test Your Acrobat Exporting Skills.pdf
+Processing: Learn Acrobat - Generative AI_2.pdf
+Processing: The Ultimate PDF Sharing Checklist.pdf
+Processing: Learn Acrobat - Generative AI_1.pdf
+Processing: Learn Acrobat - Export_2.pdf
+Processing: Learn Acrobat - Edit_2.pdf
+Processing: Learn Acrobat - Export_1.pdf
+Processing: Learn Acrobat - Edit_1.pdf
+Processing: Learn Acrobat - Fill and Sign.pdf
+Processing: Learn Acrobat - Request e-signatures_2.pdf
+Processing: Learn Acrobat - Request e-signatures_1.pdf
+Processing: Learn Acrobat - Share_1.pdf
+   Extracted 1 chunks
+Processing: Learn Acrobat - Create and Convert_1.pdf
+   Extracted 2 chunks
+Processing: Learn Acrobat - Share_2.pdf
+   Extracted 1 chunks
+Processing: Learn Acrobat - Create and Convert_2.pdf
+   Extracted 5 chunks
+   Extracted 6 chunks
+   Extracted 8 chunks
+   Extracted 10 chunks
+   Extracted 8 chunks
+   Extracted 7 chunks
+   Extracted 9 chunks
+   Extracted 12 chunks
+   Extracted 14 chunks
+   Extracted 13 chunks
+   Extracted 17 chunks
+   Extracted 21 chunks
+   Test Your Acrobat Exporting Skills.pdf: 1 chunks
+   Learn Acrobat - Generative AI_2.pdf: 5 chunks
+   The Ultimate PDF Sharing Checklist.pdf: 1 chunks
+   Learn Acrobat - Generative AI_1.pdf: 12 chunks
+   Learn Acrobat - Export_2.pdf: 2 chunks
+   Learn Acrobat - Edit_2.pdf: 10 chunks
+   Learn Acrobat - Export_1.pdf: 17 chunks
+   Learn Acrobat - Edit_1.pdf: 9 chunks
+   Learn Acrobat - Fill and Sign.pdf: 7 chunks
+   Learn Acrobat - Request e-signatures_2.pdf: 8 chunks
+   Learn Acrobat - Request e-signatures_1.pdf: 13 chunks
+   Learn Acrobat - Share_1.pdf: 6 chunks
+   Learn Acrobat - Create and Convert_1.pdf: 21 chunks
+   Learn Acrobat - Share_2.pdf: 8 chunks
+   Learn Acrobat - Create and Convert_2.pdf: 14 chunks
+Created 134 total chunks
+
+Step 2: MiniLM semantic ranking...
+Ranking chunks for persona: HR professional
+Calculating relevance for 134 chunks...
+Computing embeddings for 134 texts...
+Computing embeddings for 1 texts...
+Major boost for Fill and Sign content: Learn Acrobat - Fill and Sign.pdf
+Major boost for Fill and Sign content: Learn Acrobat - Fill and Sign.pdf
+Major boost for Fill and Sign content: Learn Acrobat - Fill and Sign.pdf
+Major boost for Fill and Sign content: Learn Acrobat - Fill and Sign.pdf
+Major boost for Fill and Sign content: Learn Acrobat - Fill and Sign.pdf
+Major boost for Fill and Sign content: Learn Acrobat - Fill and Sign.pdf
+Major boost for Fill and Sign content: Learn Acrobat - Fill and Sign.pdf
+Top 5 relevance scores: ['1.692', '1.671', '1.595', '1.551', '1.548']
+Documents in top results: {'Learn Acrobat - Request e-signatures_1.pdf', 'Learn Acrobat - Fill and Sign.pdf', 'Learn Acrobat - Request e-signatures_2.pdf'}
+Chunk distribution:
+   Learn Acrobat - Create and Convert_1.pdf: 21 chunks
+   Learn Acrobat - Export_1.pdf: 17 chunks
+   Learn Acrobat - Create and Convert_2.pdf: 14 chunks
+   Learn Acrobat - Request e-signatures_1.pdf: 13 chunks
+   Learn Acrobat - Generative AI_1.pdf: 12 chunks
+   Learn Acrobat - Edit_2.pdf: 10 chunks
+   Learn Acrobat - Edit_1.pdf: 9 chunks
+   Learn Acrobat - Request e-signatures_2.pdf: 8 chunks
+   Learn Acrobat - Share_2.pdf: 8 chunks
+   Learn Acrobat - Fill and Sign.pdf: 7 chunks
+   Learn Acrobat - Share_1.pdf: 6 chunks
+   Learn Acrobat - Generative AI_2.pdf: 5 chunks
+   Learn Acrobat - Export_2.pdf: 2 chunks
+   Test Your Acrobat Exporting Skills.pdf: 1 chunks
+   The Ultimate PDF Sharing Checklist.pdf: 1 chunks
+
+Step 3: T5-small summarization (parallel)...
+
+Step 4: Creating final sections...
+
+Performance Summary:
+   Total time: 106.30 seconds
+   Documents: 15
+   Chunks created: 134
+   Chunks ranked: 134
+   Chunks summarized: 134
+   Final sections: 134
+   Speed: 1.3 chunks/sec
+Performance warning: >60 seconds
+Saving results to: /Users/dia/Desktop/Adobe-1b-latest/Adobe-1b/solution/../output/challenge_1b_output.json
+Results saved successfully!
+
+Pipeline Complete!
+Processed 15 documents
+Total time: 106.30 seconds
+Generated 134 relevant sections

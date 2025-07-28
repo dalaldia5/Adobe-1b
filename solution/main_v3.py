@@ -8,6 +8,7 @@ import time
 import os
 from pathlib import Path
 from typing import List, Dict, Any
+import concurrent.futures
 
 # Import our custom components
 from chunker_v3 import TokenBasedChunker
@@ -24,8 +25,8 @@ class PersonaDrivenDocumentIntelligence:
     """
     
     def __init__(self):
-        print("🚀 Initializing Persona-Driven Document Intelligence Pipeline")
-        print("🔧 Architecture: MiniLM + T5-small + spaCy")
+        print("Initializing Persona-Driven Document Intelligence Pipeline")
+        print("Architecture: MiniLM + T5-small + spaCy")
         
         # Initialize pipeline components
         self.chunker = TokenBasedChunker()
@@ -42,11 +43,11 @@ class PersonaDrivenDocumentIntelligence:
             'total_time': 0
         }
         
-        print("✅ Pipeline ready!")
+        print("Pipeline ready!")
     
     def load_input_files(self, input_dir: str) -> tuple:
         """Load persona and job requirements from input files."""
-        print("📂 Loading input files...")
+        print("Loading input files...")
         
         job_file = os.path.join(input_dir, 'job.txt')
         persona_file = os.path.join(input_dir, 'persona.txt')
@@ -58,13 +59,13 @@ class PersonaDrivenDocumentIntelligence:
             with open(persona_file, 'r', encoding='utf-8') as f:
                 persona = f.read().strip()
             
-            print(f"👤 Persona: {persona}")
-            print(f"💼 Job: {job}")
+            print(f"Persona: {persona}")
+            print(f"Job: {job}")
             
             return persona, job
             
         except Exception as e:
-            print(f"❌ Error loading input files: {e}")
+            print(f"Error loading input files: {e}")
             raise
     
     def process_documents(self, docs_dir: str, persona: str, job: str) -> List[Dict[str, Any]]:
@@ -76,66 +77,73 @@ class PersonaDrivenDocumentIntelligence:
         """
         self.start_time = time.time()
         
-        print(f"📚 Processing documents from: {docs_dir}")
-        print(f"🎯 Target: 5 PDFs in <60 seconds")
+        print(f"Processing documents from: {docs_dir}")
+        print(f"Target: 5 PDFs in <60 seconds")
         
-        # Step 1: Create chunks from all PDFs
-        print("\n🔧 Step 1: Token-based chunking...")
+        # Step 1: Create chunks from all PDFs (parallelized)
+        print("\nStep 1: Token-based chunking (parallel)...")
         all_chunks = []
         
         pdf_files = [f for f in os.listdir(docs_dir) if f.endswith('.pdf')]
         self.stats['documents_processed'] = len(pdf_files)
         
-        print(f"📄 Found {len(pdf_files)} PDF files")
+        print(f"Found {len(pdf_files)} PDF files")
         
-        for pdf_file in pdf_files:
-            pdf_path = os.path.join(docs_dir, pdf_file)
-            chunks = self.chunker.process_pdf(Path(pdf_path))
-            
+        pdf_paths = [os.path.join(docs_dir, pdf_file) for pdf_file in pdf_files]
+        
+        # Parallelize PDF chunking
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            chunk_lists = list(executor.map(lambda path: self.chunker.process_pdf(Path(path)), pdf_paths))
+        
+        for pdf_file, chunks in zip(pdf_files, chunk_lists):
             print(f"   {pdf_file}: {len(chunks)} chunks")
             all_chunks.extend(chunks)
         
         self.stats['chunks_created'] = len(all_chunks)
-        print(f"📊 Created {len(all_chunks)} total chunks")
+        print(f"Created {len(all_chunks)} total chunks")
         
         # Step 2: Semantic ranking with MiniLM
-        print("\n🔍 Step 2: MiniLM semantic ranking...")
+        print("\nStep 2: MiniLM semantic ranking...")
         ranked_chunks = self.ranker.rank_chunks(
-            all_chunks, persona, job, top_k=7
+            all_chunks, persona, job, top_k=len(all_chunks)
         )
         
         self.stats['chunks_ranked'] = len(ranked_chunks)
         
         # Show diversity check
         doc_distribution = {}
-        for chunk in ranked_chunks[:7]:
+        for chunk in ranked_chunks:
             doc = chunk['document']
             doc_distribution[doc] = doc_distribution.get(doc, 0) + 1
-        
-        print(f"📈 Top 7 chunks distribution:")
+        print(f"Chunk distribution:")
         for doc, count in sorted(doc_distribution.items(), key=lambda x: x[1], reverse=True):
             print(f"   {doc}: {count} chunks")
         
-        # Step 3: T5-small summarization
-        print("\n📝 Step 3: T5-small summarization...")
-        
-        # Take top 7 chunks for summarization
-        top_chunks = ranked_chunks[:7]
-        summarized_chunks = self.summarizer.summarize_chunks(
-            top_chunks, persona, job
-        )
+        # Step 3: T5-small summarization (parallelized)
+        print("\nStep 3: T5-small summarization (parallel)...")
+        def summarize_chunk(chunk):
+            return self.summarizer.summarize_chunk(chunk, persona, job)
+        summarized_chunks = []
+        # Use ThreadPoolExecutor for compatibility (avoid pickling issues)
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            summaries = list(executor.map(summarize_chunk, ranked_chunks))
+        for chunk, summary in zip(ranked_chunks, summaries):
+            enhanced_chunk = chunk.copy()
+            enhanced_chunk['summary'] = summary
+            enhanced_chunk['summary_method'] = 'T5' if self.summarizer.model else 'extractive'
+            summarized_chunks.append(enhanced_chunk)
         
         self.stats['chunks_summarized'] = len(summarized_chunks)
         
         # Step 4: Create final sections
-        print("\n📋 Step 4: Creating final sections...")
+        print("\nStep 4: Creating final sections...")
         sections = summarized_chunks  # Use summarized chunks as sections
         
         # Performance summary
         total_time = time.time() - self.start_time
         self.stats['total_time'] = total_time
         
-        print(f"\n⏱️ Performance Summary:")
+        print(f"\nPerformance Summary:")
         print(f"   Total time: {total_time:.2f} seconds")
         print(f"   Documents: {self.stats['documents_processed']}")
         print(f"   Chunks created: {self.stats['chunks_created']}")
@@ -145,76 +153,52 @@ class PersonaDrivenDocumentIntelligence:
         print(f"   Speed: {self.stats['chunks_created']/total_time:.1f} chunks/sec")
         
         if total_time <= 60:
-            print("✅ Target achieved: <60 seconds!")
+            print("Target achieved: <60 seconds!")
         else:
-            print("⚠️ Performance warning: >60 seconds")
+            print("Performance warning: >60 seconds")
         
         return sections
     
     def format_output(self, sections: List[Dict[str, Any]], persona: str, job: str) -> Dict[str, Any]:
-        """Format results to match expected output structure."""
-        
-        # Limit to top 7 sections for final output
-        top_sections = sections[:7]
-        
-        # Get current timestamp
+        """Format results to match expected output structure in expectedOutput.json."""
         import datetime
         timestamp = datetime.datetime.now().isoformat()
-        
-        # Get list of input documents
         input_documents = list(set([section.get('document', 'Unknown') for section in sections]))
-        
+        # extracted_sections: only document, section_title, importance_rank, page_number
+        extracted_sections = []
+        subsection_analysis = []
+        for i, section in enumerate(sections):
+            extracted_sections.append({
+                "document": section.get('document', 'Unknown'),
+                "section_title": section.get('section_title', f'Section {i+1}'),
+                "importance_rank": i + 1,
+                "page_number": section.get('page_number', 1)
+            })
+            subsection_analysis.append({
+                "document": section.get('document', 'Unknown'),
+                "refined_text": section.get('summary', section.get('text', '')[:500] + "..."),
+                "page_number": section.get('page_number', 1)
+            })
         output = {
             "metadata": {
                 "input_documents": input_documents,
                 "persona": persona,
                 "job_to_be_done": job,
-                "processing_timestamp": timestamp,
-                "processing_stats": {
-                    "total_documents": self.stats['documents_processed'],
-                    "total_chunks_created": self.stats['chunks_created'],
-                    "total_processing_time": f"{self.stats['total_time']:.2f}s",
-                    "architecture": "MiniLM + T5-small + spaCy",
-                    "performance_target": "5 PDFs in <60 seconds",
-                    "constraints_met": {
-                        "cpu_only": True,
-                        "model_size_under_1gb": True,
-                        "processing_under_60s": self.stats['total_time'] <= 60,
-                        "no_internet_access": True
-                    }
-                }
+                "processing_timestamp": timestamp
             },
-            "extracted_sections": []
+            "extracted_sections": extracted_sections,
+            "subsection_analysis": subsection_analysis
         }
-        
-        for i, section in enumerate(top_sections):
-            # Main section data
-            extracted_section = {
-                "document": section.get('document', 'Unknown'),
-                "page_number": section.get('page_number', 1),
-                "section_title": section.get('section_title', f'Section {i+1}'),
-                "importance_rank": i + 1,
-                "sub_section_analysis": {
-                    "document": section.get('document', 'Unknown'),
-                    "refined_text": section.get('summary', section.get('text', '')[:500] + "..."),
-                    "page_number": section.get('page_number', 1),
-                    "relevance_score": round(section.get('relevance_score', 0.0), 3),
-                    "keywords": section.get('keywords', []),
-                    "token_count": section.get('token_count', 0)
-                }
-            }
-            output["extracted_sections"].append(extracted_section)
-        
         return output
     
     def save_output(self, output: Dict[str, Any], output_path: str):
         """Save results to JSON file."""
-        print(f"💾 Saving results to: {output_path}")
+        print(f"Saving results to: {output_path}")
         
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(output, f, indent=2, ensure_ascii=False)
         
-        print("✅ Results saved successfully!")
+        print("Results saved successfully!")
 
 
 def main():
@@ -247,13 +231,13 @@ def main():
         pipeline.save_output(output, output_file)
         
         # Summary
-        print(f"\n🎉 Pipeline Complete!")
-        print(f"📊 Processed {pipeline.stats['documents_processed']} documents")
-        print(f"⏱️ Total time: {pipeline.stats['total_time']:.2f} seconds")
-        print(f"📄 Generated {len(sections)} relevant sections")
+        print(f"\nPipeline Complete!")
+        print(f"Processed {pipeline.stats['documents_processed']} documents")
+        print(f"Total time: {pipeline.stats['total_time']:.2f} seconds")
+        print(f"Generated {len(sections)} relevant sections")
         
     except Exception as e:
-        print(f"❌ Pipeline error: {e}")
+        print(f"Pipeline error: {e}")
         raise
 
 

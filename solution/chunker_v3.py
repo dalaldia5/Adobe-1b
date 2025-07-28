@@ -20,7 +20,7 @@ class TokenBasedChunker:
         self.max_tokens = 1024
         self.overlap_tokens = 50
         
-        print(f"✅ Chunker initialized: {self.min_tokens}-{self.max_tokens} tokens per chunk")
+        print(f"Chunker initialized: {self.min_tokens}-{self.max_tokens} tokens per chunk")
     
     def count_tokens(self, text: str) -> int:
         """Count tokens using T5 tokenizer."""
@@ -120,7 +120,7 @@ class TokenBasedChunker:
             doc = fitz.open(pdf_path)
             doc_name = pdf_path.name
             
-            print(f"📄 Processing: {doc_name}")
+            print(f"Processing: {doc_name}")
             
             for page_num in range(len(doc)):
                 page = doc[page_num]
@@ -133,10 +133,10 @@ class TokenBasedChunker:
                     chunks.extend(page_chunks)
             
             doc.close()
-            print(f"   → Extracted {len(chunks)} chunks")
+            print(f"   Extracted {len(chunks)} chunks")
             
         except Exception as e:
-            print(f"❌ Error processing {pdf_path}: {e}")
+            print(f"Error processing {pdf_path}: {e}")
         
         return chunks
     
@@ -144,7 +144,7 @@ class TokenBasedChunker:
         """
         Process 3-10 PDF files into 512-1024 token chunks.
         """
-        print(f"🔄 Chunking {len(pdf_paths)} documents...")
+        print(f"Chunking {len(pdf_paths)} documents...")
         
         all_chunks = []
         
@@ -161,7 +161,7 @@ class TokenBasedChunker:
         # Print statistics  
         if all_chunks:
             token_counts = [chunk['token_count'] for chunk in all_chunks]
-            print(f"📊 Chunk Statistics:")
+            print(f"Chunk Statistics:")
             print(f"   Total chunks: {len(all_chunks)}")
             print(f"   Token range: {min(token_counts)}-{max(token_counts)}")  
             print(f"   Average: {sum(token_counts)//len(token_counts)} tokens")

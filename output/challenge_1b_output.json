@@ -1,236 +1,689 @@
 {
   "metadata": {
     "input_documents": [
+      "Learn Acrobat - Create and Convert_1.pdf",
       "Learn Acrobat - Fill and Sign.pdf",
-      "Learn Acrobat - Create and Convert_1.pdf"
+      "Learn Acrobat - Create and Convert_2.pdf",
+      "Learn Acrobat - Edit_2.pdf",
+      "Learn Acrobat - Edit_1.pdf"
     ],
     "persona": "HR professional",
     "job_to_be_done": "Create and manage fillable forms for onboarding and compliance.",
-    "processing_timestamp": "2025-07-28T16:52:20.941307",
-    "processing_stats": {
-      "total_documents": 5,
-      "total_chunks_created": 61,
-      "total_processing_time": "24.51s",
-      "architecture": "MiniLM + T5-small + spaCy",
-      "performance_target": "5 PDFs in <60 seconds",
-      "constraints_met": {
-        "cpu_only": true,
-        "model_size_under_1gb": true,
-        "processing_under_60s": true,
-        "no_internet_access": true
-      }
-    }
+    "processing_timestamp": "2025-07-28T17:59:03.214360"
   },
   "extracted_sections": [
     {
       "document": "Learn Acrobat - Fill and Sign.pdf",
-      "page_number": 15,
       "section_title": "Section 1",
       "importance_rank": 1,
-      "sub_section_analysis": {
-        "document": "Learn Acrobat - Fill and Sign.pdf",
-        "refined_text": "Open a PDF document. Sign the document or form. Add your signature and initials. Click Sign.",
-        "page_number": 15,
-        "relevance_score": 1.417,
-        "keywords": [
-          "fields",
-          "global",
-          "initial",
-          "handwritten",
-          "black",
-          "default",
-          "quick",
-          "agreement",
-          "done",
-          "picture",
-          "desktop",
-          "field",
-          "example",
-          "right",
-          "company"
-        ],
-        "token_count": 466
-      }
+      "page_number": 2
     },
     {
       "document": "Learn Acrobat - Fill and Sign.pdf",
-      "page_number": 2,
       "section_title": "Section 2",
       "importance_rank": 2,
-      "sub_section_analysis": {
-        "document": "Learn Acrobat - Fill and Sign.pdf",
-        "refined_text": "Learn how Fill & Sign works. Use the Fill and Sign tool. Add text and other symbols to the form. Fill in the text fields.",
-        "page_number": 2,
-        "relevance_score": 1.386,
-        "keywords": [
-          "tool",
-          "global",
-          "topic",
-          "filling",
-          "> fill & sign",
-          "button",
-          "field",
-          "interactive",
-          "the fill & sign",
-          "arrow",
-          "keypad",
-          "cursor",
-          "• flat",
-          "select",
-          "signature"
-        ],
-        "token_count": 366
-      }
+      "page_number": 15
     },
     {
       "document": "Learn Acrobat - Fill and Sign.pdf",
-      "page_number": 17,
       "section_title": "Section 3",
       "importance_rank": 3,
-      "sub_section_analysis": {
-        "document": "Learn Acrobat - Fill and Sign.pdf",
-        "refined_text": "Sign using the email link 1. Select the link of the agreement received in your email for signing. The agreement opens in a web browser. 2. Choose the fields and enter the requested information. 3. Select The signature field and then select Apply. 4. Select Click To Sign.",
-        "page_number": 17,
-        "relevance_score": 1.081,
-        "keywords": [
-          "browser",
-          "style",
-          "reuse",
-          "agreement",
-          "select click to sign",
-          "acrobat reader",
-          "field",
-          "email",
-          "option",
-          "number",
-          "select",
-          "signature",
-          "signing",
-          "selection",
-          "adobe"
-        ],
-        "token_count": 367
-      }
+      "page_number": 17
     },
     {
       "document": "Learn Acrobat - Fill and Sign.pdf",
-      "page_number": 7,
       "section_title": "Section 4",
       "importance_rank": 4,
-      "sub_section_analysis": {
-        "document": "Learn Acrobat - Fill and Sign.pdf",
-        "refined_text": "Add your signature or initials to a form and save it to your computer.",
-        "page_number": 7,
-        "relevance_score": 0.778,
-        "keywords": [
-          "acrobat/reader",
-          "initial",
-          "black",
-          "quick",
-          "jpeg",
-          "computer",
-          "acrobat/reader accepts jpg",
-          "sheet",
-          "white",
-          "picture",
-          "field",
-          "circle",
-          "edge",
-          "select",
-          "signature"
-        ],
-        "token_count": 276
-      }
+      "page_number": 10
     },
     {
       "document": "Learn Acrobat - Fill and Sign.pdf",
-      "page_number": 6,
       "section_title": "Section 5",
       "importance_rank": 5,
-      "sub_section_analysis": {
-        "document": "Learn Acrobat - Fill and Sign.pdf",
-        "refined_text": "Create a new signature for HR professional. Add your initials to the form. Select Add signature. Click Add Signature.",
-        "page_number": 6,
-        "relevance_score": 0.752,
-        "keywords": [
-          "initial",
-          "quick",
-          "done",
-          "picture",
-          "field",
-          "circle",
-          "camera",
-          "add",
-          "select",
-          "signature",
-          "action",
-          "corner",
-          "select add signature",
-          "dialog",
-          "placement"
-        ],
-        "token_count": 232
-      }
+      "page_number": 6
+    },
+    {
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "section_title": "Section 6",
+      "importance_rank": 6,
+      "page_number": 7
     },
     {
       "document": "Learn Acrobat - Create and Convert_1.pdf",
-      "page_number": 21,
-      "section_title": "Section 6",
-      "importance_rank": 6,
-      "sub_section_analysis": {
-        "document": "Learn Acrobat - Create and Convert_1.pdf",
-        "refined_text": "Learn how to convert Acrobat PDFs. Learn the settings for Adobe PDF/A Compliance. Understand the Permissions Password Specifies a password that users must use to open the document. Enable Text Access For Screen Reader Devices For The Visually Impaired Prevents or allows screen reader devices to read text.",
-        "page_number": 21,
-        "relevance_score": 0.707,
-        "keywords": [
-          "conversion",
-          "engine",
-          "electronic",
-          "default",
-          "button",
-          "pdf 1.5",
-          "screen",
-          "adobe pdfmaker",
-          "change",
-          "option",
-          "setting",
-          "available",
-          "editing",
-          "iso",
-          "printing"
-        ],
-        "token_count": 350
-      }
+      "section_title": "Section 7",
+      "importance_rank": 7,
+      "page_number": 21
     },
     {
       "document": "Learn Acrobat - Fill and Sign.pdf",
-      "page_number": 10,
-      "section_title": "Section 7",
-      "importance_rank": 7,
-      "sub_section_analysis": {
-        "document": "Learn Acrobat - Fill and Sign.pdf",
-        "refined_text": "Understand the Auto-Complete feature. Select a form field. Edit the list in the preferences.",
-        "page_number": 10,
-        "relevance_score": 0.692,
-        "keywords": [
-          "typing",
-          "select forms",
-          "description",
-          "default",
-          "category",
-          "field",
-          "interactive",
-          "response",
-          "misspelled",
-          "advanced",
-          "option",
-          "number",
-          "select",
-          "auto-complete",
-          "memory"
-        ],
-        "token_count": 367
-      }
+      "section_title": "Section 8",
+      "importance_rank": 8,
+      "page_number": 16
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "section_title": "Section 9",
+      "importance_rank": 9,
+      "page_number": 19
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "section_title": "Section 10",
+      "importance_rank": 10,
+      "page_number": 27
+    },
+    {
+      "document": "Learn Acrobat - Edit_1.pdf",
+      "section_title": "Section 11",
+      "importance_rank": 11,
+      "page_number": 9
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "section_title": "Section 12",
+      "importance_rank": 12,
+      "page_number": 6
+    },
+    {
+      "document": "Learn Acrobat - Edit_1.pdf",
+      "section_title": "Section 13",
+      "importance_rank": 13,
+      "page_number": 4
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "section_title": "Section 14",
+      "importance_rank": 14,
+      "page_number": 8
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "section_title": "Section 15",
+      "importance_rank": 15,
+      "page_number": 12
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "section_title": "Section 16",
+      "importance_rank": 16,
+      "page_number": 12
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "section_title": "Section 17",
+      "importance_rank": 17,
+      "page_number": 18
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "section_title": "Section 18",
+      "importance_rank": 18,
+      "page_number": 29
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "section_title": "Section 19",
+      "importance_rank": 19,
+      "page_number": 6
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "section_title": "Section 20",
+      "importance_rank": 20,
+      "page_number": 20
+    },
+    {
+      "document": "Learn Acrobat - Edit_2.pdf",
+      "section_title": "Section 21",
+      "importance_rank": 21,
+      "page_number": 14
+    },
+    {
+      "document": "Learn Acrobat - Edit_1.pdf",
+      "section_title": "Section 22",
+      "importance_rank": 22,
+      "page_number": 13
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "section_title": "Section 23",
+      "importance_rank": 23,
+      "page_number": 7
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "section_title": "Section 24",
+      "importance_rank": 24,
+      "page_number": 10
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "section_title": "Section 25",
+      "importance_rank": 25,
+      "page_number": 2
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "section_title": "Section 26",
+      "importance_rank": 26,
+      "page_number": 1
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "section_title": "Section 27",
+      "importance_rank": 27,
+      "page_number": 16
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "section_title": "Section 28",
+      "importance_rank": 28,
+      "page_number": 22
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "section_title": "Section 29",
+      "importance_rank": 29,
+      "page_number": 14
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "section_title": "Section 30",
+      "importance_rank": 30,
+      "page_number": 26
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "section_title": "Section 31",
+      "importance_rank": 31,
+      "page_number": 25
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "section_title": "Section 32",
+      "importance_rank": 32,
+      "page_number": 11
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "section_title": "Section 33",
+      "importance_rank": 33,
+      "page_number": 4
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "section_title": "Section 34",
+      "importance_rank": 34,
+      "page_number": 24
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "section_title": "Section 35",
+      "importance_rank": 35,
+      "page_number": 8
+    },
+    {
+      "document": "Learn Acrobat - Edit_2.pdf",
+      "section_title": "Section 36",
+      "importance_rank": 36,
+      "page_number": 4
+    },
+    {
+      "document": "Learn Acrobat - Edit_1.pdf",
+      "section_title": "Section 37",
+      "importance_rank": 37,
+      "page_number": 7
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "section_title": "Section 38",
+      "importance_rank": 38,
+      "page_number": 9
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "section_title": "Section 39",
+      "importance_rank": 39,
+      "page_number": 3
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "section_title": "Section 40",
+      "importance_rank": 40,
+      "page_number": 5
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "section_title": "Section 41",
+      "importance_rank": 41,
+      "page_number": 3
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "section_title": "Section 42",
+      "importance_rank": 42,
+      "page_number": 23
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "section_title": "Section 43",
+      "importance_rank": 43,
+      "page_number": 14
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "section_title": "Section 44",
+      "importance_rank": 44,
+      "page_number": 10
+    },
+    {
+      "document": "Learn Acrobat - Edit_1.pdf",
+      "section_title": "Section 45",
+      "importance_rank": 45,
+      "page_number": 11
+    },
+    {
+      "document": "Learn Acrobat - Edit_2.pdf",
+      "section_title": "Section 46",
+      "importance_rank": 46,
+      "page_number": 15
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "section_title": "Section 47",
+      "importance_rank": 47,
+      "page_number": 9
+    },
+    {
+      "document": "Learn Acrobat - Edit_2.pdf",
+      "section_title": "Section 48",
+      "importance_rank": 48,
+      "page_number": 8
+    },
+    {
+      "document": "Learn Acrobat - Edit_1.pdf",
+      "section_title": "Section 49",
+      "importance_rank": 49,
+      "page_number": 16
+    },
+    {
+      "document": "Learn Acrobat - Edit_2.pdf",
+      "section_title": "Section 50",
+      "importance_rank": 50,
+      "page_number": 6
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "section_title": "Section 51",
+      "importance_rank": 51,
+      "page_number": 5
+    },
+    {
+      "document": "Learn Acrobat - Edit_2.pdf",
+      "section_title": "Section 52",
+      "importance_rank": 52,
+      "page_number": 1
+    },
+    {
+      "document": "Learn Acrobat - Edit_1.pdf",
+      "section_title": "Section 53",
+      "importance_rank": 53,
+      "page_number": 14
+    },
+    {
+      "document": "Learn Acrobat - Edit_1.pdf",
+      "section_title": "Section 54",
+      "importance_rank": 54,
+      "page_number": 15
+    },
+    {
+      "document": "Learn Acrobat - Edit_2.pdf",
+      "section_title": "Section 55",
+      "importance_rank": 55,
+      "page_number": 3
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "section_title": "Section 56",
+      "importance_rank": 56,
+      "page_number": 4
+    },
+    {
+      "document": "Learn Acrobat - Edit_2.pdf",
+      "section_title": "Section 57",
+      "importance_rank": 57,
+      "page_number": 13
+    },
+    {
+      "document": "Learn Acrobat - Edit_1.pdf",
+      "section_title": "Section 58",
+      "importance_rank": 58,
+      "page_number": 3
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "section_title": "Section 59",
+      "importance_rank": 59,
+      "page_number": 17
+    },
+    {
+      "document": "Learn Acrobat - Edit_2.pdf",
+      "section_title": "Section 60",
+      "importance_rank": 60,
+      "page_number": 10
+    },
+    {
+      "document": "Learn Acrobat - Edit_2.pdf",
+      "section_title": "Section 61",
+      "importance_rank": 61,
+      "page_number": 11
+    }
+  ],
+  "subsection_analysis": [
+    {
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "refined_text": "Learn how Fill & Sign works. Use the Fill and Sign tool. Add text and other symbols to the form. Fill in the text fields.",
+      "page_number": 2
+    },
+    {
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "refined_text": "Open a PDF document. Sign the document or form. Add your signature and initials. Click Sign.",
+      "page_number": 15
+    },
+    {
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "refined_text": "Sign using the email link 1. Select the link of the agreement received in your email for signing. The agreement opens in a web browser. 2. Choose the fields and enter the requested information. 3. Select The signature field and then select Apply. 4. Select Click To Sign.",
+      "page_number": 17
+    },
+    {
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "refined_text": "Understand the Auto-Complete feature. Select a form field. Edit the list in the preferences.",
+      "page_number": 10
+    },
+    {
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "refined_text": "Create a new signature for HR professional. Add your initials to the form. Select Add signature. Click Add Signature.",
+      "page_number": 6
+    },
+    {
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "refined_text": "Add your signature or initials to a form and save it to your computer.",
+      "page_number": 7
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "refined_text": "Learn how to convert Acrobat PDFs. Learn the settings for Adobe PDF/A Compliance. Understand the Permissions Password Specifies a password that users must use to open the document. Enable Text Access For Screen Reader Devices For The Visually Impaired Prevents or allows screen reader devices to read text.",
+      "page_number": 21
+    },
+    {
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "refined_text": "Open Adobe Acrobat Sign. Select the field you want to place the signature or initial. Click on the \"Sign an Agreement\" button. Sign the agreement.",
+      "page_number": 16
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "refined_text": "Create a PDF and send it for review 1. Open the file in the application used to create it. 2. Click the Convert To Adobe PDF And Send For Review button on the Acrobat PDFMaker toolbar, or (if available) choose Adobe Print > Converted To AkrobatPDF And Run Action. 3. Click an action from the button menu, and follow the onscreen prompts to save the files. 4. Click Start.",
+      "page_number": 19
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "refined_text": "Open Acrobat PDFMaker to create merged PDFs. Select the file you want to send.",
+      "page_number": 27
+    },
+    {
+      "document": "Learn Acrobat - Edit_1.pdf",
+      "refined_text": "1. Select Edit in the global bar. 2. Add or edit lists You can add items to a numbered or bulleted list. Create list items. 3. Select Text under Add Content. 4. Click the Add button. 5. Click Edit.",
+      "page_number": 9
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "refined_text": "Worksheets are not resized. Fit worksheet to a single page .",
+      "page_number": 6
+    },
+    {
+      "document": "Learn Acrobat - Edit_1.pdf",
+      "refined_text": "Write down the text that you want to edit in the left Format panel. Click the “Edit” button at the top of the Text-box.",
+      "page_number": 4
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "refined_text": "Create an embedded index. Open the Adobe PDF > [Convert Selected Messages and Convert Folders] menus. Select “Attach As Adobe pdf” Buttons. Click the “Add Folder Name” button. Enter the name of the PDF you want to convert.",
+      "page_number": 8
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "refined_text": "Open the PDF file in its authoring application. Click the Print command. Select a PDF format.",
+      "page_number": 12
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "refined_text": "Create multiple PDFs from multiple native files. Open Acrobat. Click the PDF toolbar button. Select a command. Install PDFMaker.",
+      "page_number": 12
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "refined_text": "Create a PDF as an email attachment 1. Open the file in the application used to create it. Open Adobe Acrobat. Click the Send File By Email icon ( ) in Adobe PDF. Select the files to attach, and click Open. Convert the PDF to an E-mail message.",
+      "page_number": 18
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "refined_text": "Learn how to convert Visio files to PDF (Acrobat Pro) PDFs created from VisIo file preserve page sizes and support layers, searchable text, custom properties, links, bookmarks, and comments, depending on the conversion settings. To specify the properties of shapes and guides, choose Acrobot > Preferences 2. Choose Akrobat > Convert To Adobe PDF 3. Choose AdobePDF > Create PDF. 4. Select a layer option to retain or flatten layers in the resulting PDF, then click Continue.",
+      "page_number": 29
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "refined_text": "Select a setting for your printer. Select an Acrobat conversion preset. Create downloadable PDF files.",
+      "page_number": 6
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "refined_text": "Review the conversion settings. Select a PDFMaker application. Click the “Conversion Settings” button. Choose the Adobe PDF File Name. Enter the file name of the PDF you want to convert.",
+      "page_number": 20
+    },
+    {
+      "document": "Learn Acrobat - Edit_2.pdf",
+      "refined_text": "Understand the limitations of editing a scanned PDF. Review the document to ensure the content is accurate and complete. Use the OCR tool to edit the documents. Check for compatibility issues.",
+      "page_number": 14
+    },
+    {
+      "document": "Learn Acrobat - Edit_1.pdf",
+      "refined_text": "Use Adobe Acrobat's image-editing capabilities. Use the available fonts. Learn how to add, resize, move, or replace images and objects in a PDF.",
+      "page_number": 13
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "refined_text": "Open the PDFMaker window. Select the worksheets that appear on the same page. Choose a sheet size for each worksheet. Determine the size of the sheet. Set the compatibility level for the document.",
+      "page_number": 7
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "refined_text": "Converts any user-created Word bookmarks to PDF bookmarking. Element list",
+      "page_number": 10
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "refined_text": "Understand the different tools available for PDF conversion. Understand how Acrobat works. Convert to Adobe PDF.",
+      "page_number": 2
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "refined_text": "Acrobat Pro: Select the Visio layers to convert to the PDF file. Select a layer that contains layers in the resulting PDF. Click the Add Layer(s) button.",
+      "page_number": 1
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "refined_text": "Log files for successful jobs Automatically deletes the log files if the job fails to complete.",
+      "page_number": 16
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "refined_text": "Convert Microsoft Word, PowerPoint, and Excel files to PDF. Select a range of content in the file.",
+      "page_number": 22
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "refined_text": "Download and install Acrobat PDFMaker in Windows. Use the PDF toolbar buttons to create PDFs. Open the document you want to convert to PDF. Click the “Ins” button to activate PDF Maker. Select PDFMOutlook and click “Add-in” and select “Restart”.",
+      "page_number": 14
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "refined_text": "Set up automatic email archiving 1. Open Acrobat PDFMaker. Select Automatic Archival. Click Automatically Archive. Enter the name and location of the archived email PDF. Add the folders and subfolders to the list.",
+      "page_number": 26
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "refined_text": "Convert email folders to a new PDF PDFMaker. Select the folder you want to convert.",
+      "page_number": 25
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "refined_text": "List the Word headings and styles. Select X’s. Click a Level number. Change the value of the type.",
+      "page_number": 11
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "refined_text": "Method 1: Create > PDF from file and follow through the workflow. Method 2: Drag and drop the HTML file from your system to the Acrobat Home page.",
+      "page_number": 4
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "refined_text": "Open Acrobat. Click . Select a new PDF and click Save. Enter your email address and password. Type _Portfolio into the email field.",
+      "page_number": 24
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "refined_text": "Select the file type you want to convert. Click the Advanced settings button. Select Files Of Type. Enter the conversion options.",
+      "page_number": 8
+    },
+    {
+      "document": "Learn Acrobat - Edit_2.pdf",
+      "refined_text": "1. Open the PDF in Acrobat. From the upper left, select All Tools > Organize pages. 2. Specify the page range or the pages you want to extract. Select the drop-down menu under PAGES SELECTED.",
+      "page_number": 4
+    },
+    {
+      "document": "Learn Acrobat - Edit_1.pdf",
+      "refined_text": "1. Click the text box. 2. Click Edit in the Edit panel. 3. Click resize. 4. Click Move. 5. Click Change text. 6. Move pointer to the new location. Drag the drop-down menu. Move the box to a new place. Resize text boxes.",
+      "page_number": 7
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "refined_text": "Reviewer Lists the names of reviewers who have entered comments in the current Word document.",
+      "page_number": 9
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "refined_text": "Use PDFMaker to convert AutoCAD files to PDF (Acrobat Pro for Windows)",
+      "page_number": 3
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "refined_text": "Choose a file size and quality that suits your needs. Select the file you want to create.",
+      "page_number": 5
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "refined_text": "For HR professional: Method 4: Open the file in its source application and go to Print > Adobe PDF printer. Method 5: Select Adobe Acrobat > Create a PDF (Not  A PDF Portfolio). Method 3: Right-click on the PDF and select Convert to PDF.",
+      "page_number": 3
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "refined_text": "Click the Acrobat PDFMaker Conversion Settings dialog box. Select a PDF file to convert to. Click File > Print and select the option to merge email messages into PDFs.",
+      "page_number": 23
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "refined_text": "Use Adobe PDF Printing Preferences. Access printing preferences. Select printer settings. Click Print.",
+      "page_number": 14
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "refined_text": "1. Convert to Adobe PDF. Create PDFs from text and images that you copy from applications on macOS or Windows.",
+      "page_number": 10
+    },
+    {
+      "document": "Learn Acrobat - Edit_1.pdf",
+      "refined_text": "For HR professional: Change font 1. Select Edit in the global bar. Then, from the Edit panel, select Text under Add Content. 2. Select the Font you want for the selected text. 3. In the Format Text section on the edit panel , Select text under Edit. 4. Select a font size for your text, and then select the font that you like. 5. Click the menu button on your keyboard. 6. Select Undo, Redo & more > Reddo. 7. Click OK. 8. Select Rede and More > Retweet text in Acrobat 1. Open the PDF in",
+      "page_number": 11
+    },
+    {
+      "document": "Learn Acrobat - Edit_2.pdf",
+      "refined_text": "Open the scanned PDF file in Acrobat. Type in the name of the document you want to edit and press  Enter.",
+      "page_number": 15
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "refined_text": "Convert a PDF to PDF using the Acrobat tool. Select the file you want to convert to. Click the “Save” button.",
+      "page_number": 9
+    },
+    {
+      "document": "Learn Acrobat - Edit_2.pdf",
+      "refined_text": "Open the PDF in Acrobat. Move or copy pages in a PDF. Copy pages between two PDFs.",
+      "page_number": 8
+    },
+    {
+      "document": "Learn Acrobat - Edit_1.pdf",
+      "refined_text": "Write down the information you want to edit. Select the application that will automatically update the PDF.",
+      "page_number": 16
+    },
+    {
+      "document": "Learn Acrobat - Edit_2.pdf",
+      "refined_text": "File Size Specify the maximum file size for each document in the split. File size  .Options: 0 - 1",
+      "page_number": 6
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "refined_text": "Convert AutoCAD files in batches 1. Select Adobe PDF > Batch Conversion. 2. Select the files you want to convert. Select a file size and layout. Click the Files tab. Choose the file name and file type. Save the conversion.",
+      "page_number": 5
+    },
+    {
+      "document": "Learn Acrobat - Edit_2.pdf",
+      "refined_text": "Learn how to edit the PDF. Open the editing app. Click File > Save. Select the image you want to save. Save the edited image. Export PDF to another format.",
+      "page_number": 1
+    },
+    {
+      "document": "Learn Acrobat - Edit_1.pdf",
+      "refined_text": "Select the image file you want to insert. Select a location for your image. Choose the location of the file.",
+      "page_number": 14
+    },
+    {
+      "document": "Learn Acrobat - Edit_1.pdf",
+      "refined_text": "1. Open the PDF document in Adobe Acrobat. Select Edit from the global bar. 2. Select a tool to delete images. 3. Select Add Objects to PDF. 4. Change the properties of the button.",
+      "page_number": 15
+    },
+    {
+      "document": "Learn Acrobat - Edit_2.pdf",
+      "refined_text": "Rotate pages in a PDF You can rotate all or select pages. You rotate pages using the rotate tools in the Page Thumbnails pane. Select the page range on which you want to apply the rotation.",
+      "page_number": 3
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "refined_text": "Select AutoCAD layers to convert if you choose to retain all or some AutoCases.",
+      "page_number": 4
+    },
+    {
+      "document": "Learn Acrobat - Edit_2.pdf",
+      "refined_text": "Understand the numbering system. Understand how to number a group of pages. Learn the Numbering System.",
+      "page_number": 13
+    },
+    {
+      "document": "Learn Acrobat - Edit_1.pdf",
+      "refined_text": "1. Click on the font you want to add to your PDF document. Select a font that isn't available on your system. Choose an appropriate font for your text.",
+      "page_number": 3
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_2.pdf",
+      "refined_text": "Set Adobe PDF printer properties. Set printer Preferences. Create a new printer. Open the Printing Properties dialog box. Select the printer that you want to use. Click the Printer Ports tab.",
+      "page_number": 17
+    },
+    {
+      "document": "Learn Acrobat - Edit_2.pdf",
+      "refined_text": "Understand how to delete pages in a PDF. Understand the difference between deleting and replacing pages.",
+      "page_number": 10
+    },
+    {
+      "document": "Learn Acrobat - Edit_2.pdf",
+      "refined_text": "2. Select All tools > Organize pages. The page thumbnails are displayed in the Document area.",
+      "page_number": 11
     }
   ]
 }

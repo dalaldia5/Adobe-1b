@@ -10,22 +10,22 @@ class T5Summarizer:
     """
     
     def __init__(self):
-        print("📝 Loading FLAN-T5-small for summarization...")
+        print("Loading FLAN-T5-small for summarization...")
         
         try:
             # Try FLAN-T5 first (compatible with AutoTokenizer)
             self.model = AutoModelForSeq2SeqLM.from_pretrained('google/flan-t5-small')
             self.tokenizer = AutoTokenizer.from_pretrained('google/flan-t5-small')
-            print("✅ Using FLAN-T5-small")
+            print("Using FLAN-T5-small")
         except:
             try:
                 # Fallback to regular T5
                 self.model = AutoModelForSeq2SeqLM.from_pretrained('t5-small')
                 self.tokenizer = AutoTokenizer.from_pretrained('t5-small')
-                print("✅ Using T5-small")
+                print("Using T5-small")
             except Exception as e:
-                print(f"❌ Error loading T5 models: {e}")
-                print("🔄 Using fallback summarization method")
+                print(f"Error loading T5 models: {e}")
+                print("Using fallback summarization method")
                 self.model = None
                 self.tokenizer = None
                 return
@@ -40,7 +40,7 @@ class T5Summarizer:
         self.max_output_length = 128
         self.num_beams = 2  # Fast beam search
         
-        print("✅ T5 Summarizer ready!")
+        print("T5 Summarizer ready!")
     
     def create_persona_prompt(self, text: str, persona: str, job: str) -> str:
         """Create a persona-aware prompt for summarization."""
@@ -100,14 +100,14 @@ class T5Summarizer:
             return summary
             
         except Exception as e:
-            print(f"⚠️ Error in T5 summarization: {e}")
+            print(f"Error in T5 summarization: {e}")
             return self._extractive_fallback(chunk, persona, job)
     
     def summarize_chunks(self, chunks: List[Dict[str, Any]], persona: str, job: str) -> List[Dict[str, Any]]:
         """
         Generate summaries for multiple chunks efficiently.
         """
-        print(f"📝 Summarizing {len(chunks)} chunks with T5...")
+        print(f"Summarizing {len(chunks)} chunks with T5...")
         
         summarized_chunks = []
         
@@ -123,7 +123,7 @@ class T5Summarizer:
             
             summarized_chunks.append(enhanced_chunk)
         
-        print("✅ Summarization complete!")
+        print("Summarization complete!")
         return summarized_chunks
     
     def _clean_text(self, text: str) -> str:
