@@ -78,20 +78,14 @@ adobe-1b/
 
 ### Persona File (`input/persona.txt`)
 ```
-HR professional
+
 ```
 
 ### Job Requirements (`input/job.txt`)
 ```
-Create and manage fillable forms for onboarding and compliance.
+
 ```
 
-### Documents
-Place PDF files in `input/docs/` folder. Currently supports:
-- Learn Acrobat - Fill and Sign.pdf
-- Learn Acrobat - Create and Convert_1.pdf
-- Learn Acrobat - Create and Convert_2.pdf
-- And more...
 
 ## 📤 Output Format
 
@@ -252,17 +246,7 @@ python -c "from solution.semantic_ranker import MiniLMSemanticRanker; r = MiniLM
 | No Internet | Required | Yes | ✅ |
 | Document Count | 3-5 | 5 | ✅ |
 
-## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 📞 Support
 
