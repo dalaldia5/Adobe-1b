@@ -10,14 +10,17 @@ class DocumentChunker:
     Designed to work with diverse PDF types and formats across any domain.
     """
     def __init__(self):
-        # Common section title patterns (generalized for any domain)
+        # Common section title patterns (improved for better detection)
         self.title_patterns = [
-            r"^(?:\d+\.?\s*)?([A-Z][^.!?\n]{10,60})(?:\.|\n|$)",  # Section with numbers like "1. Introduction to Forms"
-            r"^([A-Z][A-Z\s]{10,60})(?:\.|\n|$)",  # ALL CAPS titles
-            r"^([A-Z][^.!?\n]{10,60}:)",  # Title with colon
-            r"^((?:How to|Steps to|Guide to|Creating|Managing|Working with|Using)\s[^.!?\n]{5,50})",  # Instructional titles
-            r"^([A-Z][a-z]+(?:\s+[A-Z][a-z]+){2,7})(?:\.|\n|$)",  # Multi-word proper titles
-            r"^\s*([A-Z][^.!?\n]*(?:form|Form|PDF|document|field|sign|create|manage)[^.!?\n]*)(?:\.|\n|$)"  # Form-related titles
+            r"^(?:\d+\.?\s*)?([A-Z][^.!?\n]{15,80})(?:\.|\n|$)",  # Section with numbers like "1. Create fillable forms"
+            r"^([A-Z][A-Z\s]{15,80})(?:\.|\n|$)",  # ALL CAPS titles
+            r"^([A-Z][^.!?\n]{15,80}:)",  # Title with colon
+            r"^((?:How to|Steps to|Guide to|Creating|Managing|Working with|Using|Method \d+)\s[^.!?\n]{10,60})",  # Instructional titles
+            r"^([A-Z][a-z]+(?:\s+[A-Z][a-z]+){3,8})(?:\s*\([^)]+\))?(?:\.|\n|$)",  # Multi-word proper titles with optional parentheses
+            r"^\s*([A-Z][^.!?\n]*(?:form|Form|PDF|document|field|sign|create|manage|convert|edit|export|share)[^.!?\n]{5,40})(?:\.|\n|$)",  # Form-related titles
+            r"^([A-Z][^.!?\n]*(?:Acrobat|Adobe)[^.!?\n]{5,50})(?:\.|\n|$)",  # Adobe-specific titles
+            r"^(Method \d+[^.!?\n]{5,60})(?:\.|\n|$)",  # Method titles
+            r"^(Step \d+[^.!?\n]{5,60})(?:\.|\n|$)"  # Step titles
         ]
         
         # Keywords that might indicate important sections (domain-agnostic)
@@ -148,35 +151,68 @@ class DocumentChunker:
                             return ' '.join(word.capitalize() if word.lower() not in ['of', 'and', 'the', 'in', 'with', 'for'] else word.lower() 
                                           for word in title.split())
         
-        # Strategy 3: Look for instructional phrases that often indicate section titles
-        first_sentence = text.split('.')[0] if '.' in text else text[:120]
-        first_sentence = first_sentence.strip()
+        # Strategy 3: Look for instructional phrases and proper headings
+        sentences = [s.strip() for s in text.split('.') if s.strip()]
         
-        # Check if the first sentence looks like a proper section title
-        if (first_sentence and 
-            len(first_sentence.split()) <= 15 and 
-            10 <= len(first_sentence) <= 80 and
-            first_sentence[0].isupper()):
-            
-            # Additional checks for quality titles
-            if (any(keyword in first_sentence.lower() for keyword in 
-                   ['create', 'manage', 'fill', 'sign', 'form', 'document', 'pdf', 'field', 'data']) or
-                re.search(r'^\d+\.', first_sentence) or  # Numbered sections
-                first_sentence.count(' ') >= 2):  # Multi-word titles
+        for sentence in sentences[:3]:  # Check first 3 sentences
+            if (sentence and 
+                15 <= len(sentence) <= 100 and  # Reasonable title length
+                len(sentence.split()) <= 12 and  # Not too many words
+                sentence[0].isupper()):
                 
-                return re.sub(r'[.,:;!?]$', '', first_sentence)
+                # Look for title-like characteristics
+                if (any(keyword in sentence.lower() for keyword in 
+                       ['create', 'manage', 'fill', 'sign', 'form', 'document', 'pdf', 'field', 'data', 
+                        'convert', 'edit', 'export', 'share', 'method', 'step', 'how to', 'guide']) or
+                    re.search(r'^\d+\.', sentence) or  # Numbered sections
+                    re.search(r'^(Method|Step|How to|Creating|Managing)', sentence, re.IGNORECASE) or
+                    sentence.count(' ') >= 3):  # Multi-word titles
+                    
+                    title = re.sub(r'[.,:;!?]$', '', sentence)
+                    return title
         
-        # Strategy 4: Fallback - use first few words but make them more meaningful
-        words = text.split()[:8]  # Take more words for better context
-        if len(words) >= 3:
+        # Strategy 4: Look for headings in the first line that might not end with period
+        first_line = text.split('\n')[0].strip()
+        if (first_line and 
+            15 <= len(first_line) <= 100 and
+            len(first_line.split()) <= 12 and
+            first_line[0].isupper() and
+            not first_line.endswith('.') and  # Headings often don't end with periods
+            any(keyword in first_line.lower() for keyword in 
+               ['create', 'manage', 'fill', 'sign', 'form', 'document', 'pdf', 'convert', 'edit', 'method'])):
+            return first_line
+        
+        # Strategy 5: Improved fallback - create meaningful titles from content
+        # Look for the first meaningful phrase that could be a title
+        words = text.split()
+        
+        # Try to find a meaningful phrase starting with key action words
+        for i, word in enumerate(words[:20]):  # Check first 20 words
+            if word.lower() in ['create', 'creating', 'manage', 'managing', 'fill', 'filling', 
+                              'sign', 'signing', 'convert', 'converting', 'edit', 'editing', 
+                              'export', 'exporting', 'share', 'sharing', 'method', 'step']:
+                # Take a meaningful phrase starting from this word
+                end_idx = min(i + 8, len(words))
+                phrase = ' '.join(words[i:end_idx])
+                # Clean up the phrase
+                phrase = re.sub(r'[.,:;!?]$', '', phrase)
+                if 15 <= len(phrase) <= 80:
+                    # Capitalize properly
+                    return ' '.join(word.capitalize() if j == 0 or word.lower() not in ['of', 'and', 'the', 'in', 'with', 'for', 'to', 'a', 'an'] 
+                                  else word.lower() for j, word in enumerate(phrase.split()))
+        
+        # Final fallback - use first meaningful sentence but improve it
+        words = text.split()[:10]  # Take first 10 words
+        if len(words) >= 4:
             title = ' '.join(words)
             title = re.sub(r'[.,:;!?]$', '', title)
-            if len(title) <= 80:
-                return title
+            if len(title) <= 100:
+                # Make it more title-like
+                return title + "..."  # Indicate it's truncated
         
-        # Last resort - use document context
+        # Last resort - use document context with better naming
         doc_prefix = doc_name.replace('.pdf', '').replace('Learn Acrobat - ', '')
-        return f"{doc_prefix} Section {paragraph_num}"
+        return f"{doc_prefix} - Page {page_num} Content"
 
     def extract_text_with_fallbacks(self, page, method="dict"):
         """Extract text from a page with multiple fallback methods."""

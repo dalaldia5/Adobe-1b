@@ -1,63 +1,236 @@
 {
   "metadata": {
     "input_documents": [
-      "Learn Acrobat - Create and Convert_1.pdf",
-      "Learn Acrobat - Create and Convert_2.pdf",
-      "Learn Acrobat - Edit_1.pdf",
-      "Learn Acrobat - Edit_2.pdf",
-      "Learn Acrobat - Fill and Sign.pdf"
+      "Learn Acrobat - Fill and Sign.pdf",
+      "Learn Acrobat - Create and Convert_1.pdf"
     ],
     "persona": "HR professional",
     "job_to_be_done": "Create and manage fillable forms for onboarding and compliance.",
-    "processing_timestamp": "2025-07-26T08:02:17.505374"
+    "processing_timestamp": "2025-07-28T16:52:20.941307",
+    "processing_stats": {
+      "total_documents": 5,
+      "total_chunks_created": 61,
+      "total_processing_time": "24.51s",
+      "architecture": "MiniLM + T5-small + spaCy",
+      "performance_target": "5 PDFs in <60 seconds",
+      "constraints_met": {
+        "cpu_only": true,
+        "model_size_under_1gb": true,
+        "processing_under_60s": true,
+        "no_internet_access": true
+      }
+    }
   },
   "extracted_sections": [
     {
-      "document": "Learn Acrobat - Create and Convert_1.pdf",
-      "page_number": 11,
-      "section_title": "This process can be useful for creating a one-page PDF",
-      "importance_rank": 1
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "page_number": 15,
+      "section_title": "Section 1",
+      "importance_rank": 1,
+      "sub_section_analysis": {
+        "document": "Learn Acrobat - Fill and Sign.pdf",
+        "refined_text": "Open a PDF document. Sign the document or form. Add your signature and initials. Click Sign.",
+        "page_number": 15,
+        "relevance_score": 1.417,
+        "keywords": [
+          "fields",
+          "global",
+          "initial",
+          "handwritten",
+          "black",
+          "default",
+          "quick",
+          "agreement",
+          "done",
+          "picture",
+          "desktop",
+          "field",
+          "example",
+          "right",
+          "company"
+        ],
+        "token_count": 466
+      }
+    },
+    {
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "page_number": 2,
+      "section_title": "Section 2",
+      "importance_rank": 2,
+      "sub_section_analysis": {
+        "document": "Learn Acrobat - Fill and Sign.pdf",
+        "refined_text": "Learn how Fill & Sign works. Use the Fill and Sign tool. Add text and other symbols to the form. Fill in the text fields.",
+        "page_number": 2,
+        "relevance_score": 1.386,
+        "keywords": [
+          "tool",
+          "global",
+          "topic",
+          "filling",
+          "> fill & sign",
+          "button",
+          "field",
+          "interactive",
+          "the fill & sign",
+          "arrow",
+          "keypad",
+          "cursor",
+          "• flat",
+          "select",
+          "signature"
+        ],
+        "token_count": 366
+      }
+    },
+    {
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "page_number": 17,
+      "section_title": "Section 3",
+      "importance_rank": 3,
+      "sub_section_analysis": {
+        "document": "Learn Acrobat - Fill and Sign.pdf",
+        "refined_text": "Sign using the email link 1. Select the link of the agreement received in your email for signing. The agreement opens in a web browser. 2. Choose the fields and enter the requested information. 3. Select The signature field and then select Apply. 4. Select Click To Sign.",
+        "page_number": 17,
+        "relevance_score": 1.081,
+        "keywords": [
+          "browser",
+          "style",
+          "reuse",
+          "agreement",
+          "select click to sign",
+          "acrobat reader",
+          "field",
+          "email",
+          "option",
+          "number",
+          "select",
+          "signature",
+          "signing",
+          "selection",
+          "adobe"
+        ],
+        "token_count": 367
+      }
+    },
+    {
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "page_number": 7,
+      "section_title": "Section 4",
+      "importance_rank": 4,
+      "sub_section_analysis": {
+        "document": "Learn Acrobat - Fill and Sign.pdf",
+        "refined_text": "Add your signature or initials to a form and save it to your computer.",
+        "page_number": 7,
+        "relevance_score": 0.778,
+        "keywords": [
+          "acrobat/reader",
+          "initial",
+          "black",
+          "quick",
+          "jpeg",
+          "computer",
+          "acrobat/reader accepts jpg",
+          "sheet",
+          "white",
+          "picture",
+          "field",
+          "circle",
+          "edge",
+          "select",
+          "signature"
+        ],
+        "token_count": 276
+      }
+    },
+    {
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "page_number": 6,
+      "section_title": "Section 5",
+      "importance_rank": 5,
+      "sub_section_analysis": {
+        "document": "Learn Acrobat - Fill and Sign.pdf",
+        "refined_text": "Create a new signature for HR professional. Add your initials to the form. Select Add signature. Click Add Signature.",
+        "page_number": 6,
+        "relevance_score": 0.752,
+        "keywords": [
+          "initial",
+          "quick",
+          "done",
+          "picture",
+          "field",
+          "circle",
+          "camera",
+          "add",
+          "select",
+          "signature",
+          "action",
+          "corner",
+          "select add signature",
+          "dialog",
+          "placement"
+        ],
+        "token_count": 232
+      }
     },
     {
       "document": "Learn Acrobat - Create and Convert_1.pdf",
-      "page_number": 12,
-      "section_title": "You Can Create Multiple Pdfs From Multiple Native",
-      "importance_rank": 2
+      "page_number": 21,
+      "section_title": "Section 6",
+      "importance_rank": 6,
+      "sub_section_analysis": {
+        "document": "Learn Acrobat - Create and Convert_1.pdf",
+        "refined_text": "Learn how to convert Acrobat PDFs. Learn the settings for Adobe PDF/A Compliance. Understand the Permissions Password Specifies a password that users must use to open the document. Enable Text Access For Screen Reader Devices For The Visually Impaired Prevents or allows screen reader devices to read text.",
+        "page_number": 21,
+        "relevance_score": 0.707,
+        "keywords": [
+          "conversion",
+          "engine",
+          "electronic",
+          "default",
+          "button",
+          "pdf 1.5",
+          "screen",
+          "adobe pdfmaker",
+          "change",
+          "option",
+          "setting",
+          "available",
+          "editing",
+          "iso",
+          "printing"
+        ],
+        "token_count": 350
+      }
     },
     {
-      "document": "Learn Acrobat - Create and Convert_1.pdf",
-      "page_number": 8,
-      "section_title": "Depending on the type of ﬁle being converted",
-      "importance_rank": 3
-    },
-    {
-      "document": "Learn Acrobat - Create and Convert_1.pdf",
-      "page_number": 5,
-      "section_title": "You can select various settings to ensure that",
-      "importance_rank": 4
-    },
-    {
-      "document": "Learn Acrobat - Create and Convert_1.pdf",
-      "page_number": 3,
-      "section_title": "Method 1: From the top tools bar, select Create",
-      "importance_rank": 5
-    }
-  ],
-  "subsection_analysis": [
-    {
-      "document": "Learn Acrobat - Create and Convert_1.pdf",
-      "page_number": 11,
-      "refined_text": "For longer, more complex, or heavily formatted documents, it's better to create the source document in an application that offers more"
-    },
-    {
-      "document": "Learn Acrobat - Create and Convert_1.pdf",
-      "page_number": 12,
-      "refined_text": "You can create multiple PDFs from multiple native files, including files of different supported formats. This method is useful when you must"
-    },
-    {
-      "document": "Learn Acrobat - Create and Convert_1.pdf",
-      "page_number": 8,
-      "refined_text": "Choose the hamburger menu > Save or Save As (Windows) or File > Save As or File  (macOS)"
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "page_number": 10,
+      "section_title": "Section 7",
+      "importance_rank": 7,
+      "sub_section_analysis": {
+        "document": "Learn Acrobat - Fill and Sign.pdf",
+        "refined_text": "Understand the Auto-Complete feature. Select a form field. Edit the list in the preferences.",
+        "page_number": 10,
+        "relevance_score": 0.692,
+        "keywords": [
+          "typing",
+          "select forms",
+          "description",
+          "default",
+          "category",
+          "field",
+          "interactive",
+          "response",
+          "misspelled",
+          "advanced",
+          "option",
+          "number",
+          "select",
+          "auto-complete",
+          "memory"
+        ],
+        "token_count": 367
+      }
     }
   ]
 }
